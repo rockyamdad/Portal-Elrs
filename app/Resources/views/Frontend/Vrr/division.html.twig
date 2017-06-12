@@ -1,0 +1,175 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+
+<div class="page-container" >
+    <!-- BEGIN SLIDER -->
+
+
+        <h3 class="caption-color">{{ districts[0].divisionName }} বিভাগ </h3><br>
+        <!-- BEGIN DASHBOARD STATS -->
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <a class="dashboard-stat dashboard-stat-light blue-soft" href="#">
+                    <div class="visual">
+                    </div>
+                    <div class="details">
+                        <div class="number">
+                            {% if totalApplicationReceived is defined and totalApplicationReceived %}
+                           {{ totalApplicationReceived|numberBanglaConvert }}
+                            {% else %}
+                                ০
+                            {% endif %}
+                        </div>
+                        <div class="desc">
+                            সর্বমোট গৃহীত  আবেদন
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <a class="dashboard-stat dashboard-stat-light red-soft" href="#">
+                    <div class="visual">
+                    </div>
+                    <div class="details">
+                        <div class="number">
+                            {% if totalServiceDelivered is defined and totalServiceDelivered %}
+                           {{ totalServiceDelivered|numberBanglaConvert }}
+                            {% else %}
+                                ০
+                            {% endif %}
+                        </div>
+                        <div class="desc">
+                            মোট সর্বাহকৃত আবেদন
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <a class="dashboard-stat dashboard-stat-light green-soft" href="#">
+                    <div class="visual">
+                    </div>
+                    <div class="details">
+                        <div class="number">
+                            {% if totalRecordDigitization is defined and totalRecordDigitization %}
+                            {{ totalRecordDigitization|numberBanglaConvert }}
+                            {% else %}
+                                ০
+                            {% endif %}
+                        </div>
+                        <div class="desc">
+                            সর্বোমোট রেকর্ড ডিজিটাইজেশন
+                        </div>
+                    </div>
+                </a>
+            </div>
+            <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+                <a class="dashboard-stat dashboard-stat-light purple-soft" href="#">
+                    <div class="visual">
+
+                    </div>
+                    <div class="details">
+                        <div class="number">
+                            {% if totalUdcServiceDelivered is defined and totalUdcServiceDelivered %}
+                                {{ totalUdcServiceDelivered|numberBanglaConvert }}
+                            {% else %}
+                                ০
+                            {% endif %}
+                        </div>
+                        <div class="desc">
+                            ইউ ডি সি  থেকে  সর্বাহকৃত আবেদন
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        <!-- END DASHBOARD STATS -->
+        <br><br><br>
+
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>
+                        ক্রম নং
+                    </th>
+                    <th>
+                        জেলা
+                    </th>
+                    <th>
+                        মোট  উপজেলা /থানা
+                    </th>
+                    <th>
+                        মোট মৌজা
+                    </th>
+                    <th>
+                        মোট ইউ ডি সি
+                    </th>
+                    <th>
+                        মোট খতিয়ান/পর্চা
+                    </th>
+                    <th>
+                        মোট খতিয়ান/পর্চা আবেদন
+                    </th>
+                    <th>
+                        মোট সর্বাহকৃত  খতিয়ান/পর্চা
+                    </th>
+                    <th>
+                        মোট  অন্যান্য   আবেদন
+                    </th>
+                    <th>
+                        মোট সর্বাহকৃত  অন্যান্য   আবেদন
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+               
+                    {% for index,district in districts %}
+                        <tr>
+                            <td>
+                                {{ ((districts.getCurrentPageNumber - 1) * districts.getItemNumberPerPage + index + 1)|numberBanglaConvert }}
+                            </td>
+                            <td>
+                                <a   href="{{ path('district_vrr',{'id':district.id}) }}">  {{ district.name }} </a>
+                            </td>
+                            <td>
+                               {{ district.totalUpozila|numberBanglaConvert }}
+                            </td>
+                            <td>
+                                {{ district.totalMouza|numberBanglaConvert }}
+                            </td>
+                            <td>
+                                {{ district.totalUdc|numberBanglaConvert }}
+                            </td>
+                            <td>
+                                <span class="custom-color-top-nav tooltips" data-container="body" data-html="true" data-placement="top" data-original-title=" CS: {{ (district.totalKhatianCS)?district.totalKhatianCS|numberBanglaConvert:0 }} </br> RS : {{ (district.totalKhatianRS)?district.totalKhatianRS|numberBanglaConvert:0 }} </br>  SA : {{ district.totalKhatianSA?district.totalKhatianSA|numberBanglaConvert:0 }} ">{{ district.totalKhatian|numberBanglaConvert }}</span>
+                            </td>
+                            <td>
+                                {{ district.totalKhatianReceived|numberBanglaConvert }}
+                            </td>
+                            <td>
+                                {{ district.totalKhatianDelivered|numberBanglaConvert }}
+                            </td>
+                            <td>
+                                {{ district.totalOtherAppReceived|numberBanglaConvert }}
+                            </td>
+                            <td>
+                                {{ district.totalOtherAppDelivered|numberBanglaConvert }}
+                            </td>
+                        </tr>
+
+                    {% endfor %}
+                </tbody>
+            </table>
+            <div style="clear: both;"></div>
+            <div style="margin-top:30px; text-align: center;" class="navigation">
+                {{ knp_pagination_render(districts) }}
+            </div>
+        </div>
+
+
+
+
+        <!-- END CONTENT -->
+
+</div>
+{% endblock %}

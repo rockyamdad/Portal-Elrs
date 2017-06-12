@@ -1,0 +1,26 @@
+# This file is a "template" of what your parameters.yml file should look like
+# Set parameters here that may be different on each deployment target of the app, e.g. development, staging, production.
+# http://symfony.com/doc/current/best_practices/configuration.html#infrastructure-related-configuration
+parameters:
+    database_driver:   oci8
+    database_driver_class: AppBundle\Driver\OCI8\Driver
+    database_host:     127.0.0.1
+    database_port:     1521
+    database_name:     XE
+    database_user:     root
+    database_password: ~
+    database_charset: AL32UTF8
+    database_service: true
+
+    mailer_transport:  smtp
+    mailer_host:       127.0.0.1
+    mailer_user:       ~
+    mailer_password:   ~
+
+    # A secret key that's used to generate certain security-related tokens
+    secret:            ThisTokenIsNotSoSecretChangeIt
+    api_endpoint: http://elrs.dev
+
+    sms_api_endpoint: http://123.49.3.58:8081/web_send_sms.php
+    sms_api_username: pmoffice
+    sms_api_password: pmoffice

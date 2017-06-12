@@ -1,0 +1,44 @@
+services:
+#    core.example:
+#        class: CoreBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]
+
+    oracle.listener:
+        class: Doctrine\DBAL\Event\Listeners\OracleSessionInit
+        tags:
+            - { name: doctrine.event_listener, event: postConnect }
+
+    app_bundle.service.api_manager:
+       class: AppBundle\Model\ApiManager
+       arguments: [%api_endpoint%, @tbbc_cache.simple_cache_manager, @tbbc_cache.key_generator.simple_hash]
+
+    app_bundle.service.vrr_manager:
+       class: AppBundle\Model\VrrManager
+       arguments: [@doctrine.orm.entity_manager]
+
+    app_bundle.service.sms_manager:
+       class: AppBundle\Model\SMSManager
+       arguments: [%sms_api_endpoint%, %sms_api_username%, %sms_api_password%]
+
+    template.twig.placeholder_replace:
+        class: AppBundle\Extension\Twig\PlaceholderReplace
+        arguments: [@service_container]
+
+    app.twig_extension:
+       class: AppBundle\Extension\Twig\CustomTwigExtension
+       arguments: [@service_container, @template.twig.placeholder_replace]
+       public: false
+       tags:
+           - { name: twig.extension }
+
+    app.sms.listner:
+       class: AppBundle\EventListener\ApplicationListener
+       arguments: [@service_container]
+       tags:
+          - { name: kernel.event_listener, event: application.create, method: onApplicationCreate }
+
+    app.user_sms.listner:
+       class: AppBundle\EventListener\UserListener
+       arguments: [@service_container]
+       tags:
+          - { name: kernel.event_listener, event: user.create, method: onUserCreate }

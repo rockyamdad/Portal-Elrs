@@ -1,0 +1,360 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+    <div class="page-container">
+
+            <div class="row">
+                <div class="col-md-8 col-sm-12">
+
+                    <div class="page-slider">
+                        <!-- LayerSlider start -->
+                        <div id="layerslider" style="width: 100%; height: 250px; margin-top: auto;">
+
+
+                            {#<div class="ls-slide ls-slide3" data-ls="offsetxin: right; slidedelay: 7000; transition2d: 92,93,105;">#}
+
+                                {#<img src="assets/elrs-assets/pmobanner.jpg" class="ls-bg" alt="Slide background">#}
+
+                            {#</div>#}
+                            {#<div class="ls-slide ls-slide3" data-ls="offsetxin: right; slidedelay: 7000; transition2d: 92,93,105;">#}
+
+                                {#<img src="assets/elrs-assets/service_portal.png" class="ls-bg" alt="Slide background">#}
+
+                            {#</div>#}
+                            <div class="ls-slide ls-slide3" data-ls="offsetxin: right; slidedelay: 7000; transition2d: 92,93,105;">
+
+                                <img src="assets/elrs-assets/our_pride.png" class="ls-bg" alt="Slide background">
+
+                            </div>
+                            <div class="ls-slide ls-slide3" data-ls="offsetxin: right; slidedelay: 7000; transition2d: 92,93,105;">
+
+                                <img src="assets/elrs-assets/Computer-keyboard.jpg" class="ls-bg" alt="Slide background">
+
+                            </div>
+                            <div class="ls-slide ls-slide3" data-ls="offsetxin: right; slidedelay: 7000; transition2d: 92,93,105;">
+
+                                <img src="assets/elrs-assets/S-P-ICT.jpg" class="ls-bg" alt="Slide background">
+
+                            </div>
+                            {#<div class="ls-slide ls-slide3" data-ls="offsetxin: right; slidedelay: 7000; transition2d: 92,93,105;">#}
+
+                                {#<img src="assets/elrs-assets/paperless-goct-office.jpg" class="ls-bg" alt="Slide background">#}
+
+                            {#</div>#}
+
+                        </div>
+                        <!-- LayerSlider end -->
+                    </div>
+
+                </div>
+                <div class="col-md-4 col-sm-12">
+
+                        <div class="portlet-body stats-info">
+                            <div class="row number-stats" >
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="stat-left" >
+                                        <div class="stat-number">
+                                            <div class="title">
+                                                <p>সর্বমোট  গৃহীত আবেদন </p>
+                                            </div>
+                                            <div class="number">
+                                                {% if statistics[0].totalAppReceived is defined and statistics[0].totalAppReceived %}
+                                                <p>{{ statistics[0].totalAppReceived|numberBanglaConvert }}</p>
+                                                {% else %}
+                                                    ০
+                                                {% endif %}
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="stat-right">
+
+                                        <div class="stat-number">
+                                            <div class="title">
+                                                <p>   সর্বমোট সর্বাহকৃত  আবেদন </p>
+                                            </div>
+                                            <div class="number">
+                                                {% if statistics[0].totalAppDelivered is defined and statistics[0].totalAppDelivered %}
+                                                <p>{{ statistics[0].totalAppDelivered|numberBanglaConvert }}</p>
+                                                {% else %}
+                                                    ০
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row number-stats">
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="stat-left">
+
+                                        <div class="stat-number">
+                                            <div class="title">
+                                                <p>সর্বমোট রেকর্ড ডিজিটাইজেশন </p>
+                                            </div>
+                                            <div class="number">
+                                                {% if statistics[0].totalDigitizedKhatian is defined and statistics[0].totalDigitizedKhatian %}
+                                                <p>{{ statistics[0].totalDigitizedKhatian|numberBanglaConvert }}</p>
+                                                {% else %}
+                                                    ০
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6 col-sm-6 col-xs-6">
+                                    <div class="stat-right">
+
+                                        <div class="stat-number">
+                                            <div class="title">
+                                                <p>সর্বমোট রেকর্ড রুম </p>
+                                            </div>
+                                            <div class="number">
+                                                {% if statistics[0].totalRecordRoom is defined and statistics[0].totalRecordRoom %}
+                                                <p>{{ statistics[0].totalRecordRoom|numberBanglaConvert }}</p>
+                                                {% else %}
+                                                    ০
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                </div>
+            </div>
+        <div class="row">
+            <div class="col-md-8 col-sm-12 margin-top-10">
+                <h4 class="bk-org">সকল ই-সেবা</h4>
+                <div class="tiles">
+                        <div class="tile image">
+                            <a data-toggle="modal" href="#vrr_list">
+                            <div class="tile-body">
+                                {#<i class="fa fa-cloud-upload"></i>#}
+                                <img src="{{ asset('assets/elrs-assets/Vrr.jpg') }}">
+                            </div>
+                            <div class="tile-object">
+                                <div class="name">
+                                    ভার্চুয়াল রেকর্ড রুম
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                        <div class="tile image">
+                            <a data-toggle="modal" href="#application_list">
+                            <div class="tile-body">
+                                {#<i class="fa fa-file-text"></i>#}
+                                <img src="{{ asset('assets/elrs-assets/application2.png') }}">
+                            </div>
+                            <div class="tile-object">
+                                <div class="name">
+                                    সকল    আবেদন সমূহ
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                        <div class="tile image">
+                            <a data-toggle="modal" id="khatianSats" href="#khotian_status">
+                            <div class="tile-body">
+                                {#<i class="fa fa-laptop"></i>#}
+                                <img src="{{ asset('assets/elrs-assets/stauts1.jpg') }}">
+                            </div>
+                            <div class="tile-object">
+                                <div class="name">
+                                    আবেদনের সর্বশেষ অবস্থা
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                        <div class="tile image">
+                            <a data-toggle="modal" class="recordCheck" href="#record_check">
+                            <div class="tile-body">
+                                {#<i class="fa fa-book"></i>#}
+                                <img src="{{ asset('assets/elrs-assets/record-check1.png') }}">
+                            </div>
+                            <div class="tile-object">
+                                <div class="name">
+                                    রেকর্ড বৈধতা চেক
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                        <div class="tile image">
+                            <a href="{{ path('dlrs_services') }}">
+                            <div class="tile-body">
+                                {#<i class="fa fa-database"></i>#}
+                                <img src="{{ asset('assets/elrs-assets/udc-list-1.jpg') }}">
+                            </div>
+                            <div class="tile-object">
+                                <div class="name">
+                                    ইউ ডি সি তালিকা
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                        <div class="tile image">
+                            <a href="{{ path('user_manual') }}">
+                            <div class="tile-body">
+                                {#<i class="fa fa-language"></i>#}
+                                <img src="{{ asset('assets/elrs-assets/user-manual.jpg') }}">
+
+                            </div>
+                            <div class="tile-object">
+                                <div class="name">
+                                    ব্যবহার নির্দেশিকা
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                        <div class="tile image">
+                            <a data-toggle="modal" href="#porcha_search">
+                            <div class="tile-body">
+                                {#<i class="fa fa-search-minus"></i>#}
+                                <img src="{{ asset('assets/elrs-assets/record-search.jpg') }}">
+                            </div>
+                            <div class="tile-object">
+                                <div class="name">
+                                    খতিয়ান/পর্চা  অনুসন্ধান
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                        {% if app.session.get('phoneNumber') is defined and app.session.get('phoneNumber') %}
+
+                        {% else %}
+                        <div class="tile image">
+                            <a href="{{ path('user_registration') }}">
+                                <div class="tile-body">
+                                    {#<i class="fa fa-pencil-square-o"></i>#}
+                                    <img src="{{ asset('assets/elrs-assets/user-registration.png') }}">
+                                </div>
+                                <div class="tile-object">
+                                    <div class="name">
+                                        সেবাগ্রহীতার নিবন্ধন
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        {% endif %}
+                        <div class="tile image">
+                            <a href="http://www.elrs.emicroportal.com/" target="_blank">
+                            <div class="tile-body">
+                                {#<i class="fa fa-user"></i>#}
+                                <img src="{{ asset('assets/elrs-assets/udc-login2.png') }}">
+                            </div>
+                            <div class="tile-object">
+                                <div class="name">
+                                    ইউ ডি সি লগইন
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                        {% if app.session.get('phoneNumber') is defined and app.session.get('phoneNumber') %}
+                        <div class="tile image">
+                            <a href="{{ path('log_out') }}">
+                            <div class="tile-body">
+                                {#<i class="fa fa-child"></i>#}
+                                <img src="{{ asset('assets/elrs-assets/user-login.jpg') }}">
+                            </div>
+                            <div class="tile-object">
+                                <div class="name">
+                                    লগ আউট
+                                </div>
+                            </div>
+                            </a>
+                        </div>
+                        {% else %}
+                        <div class="tile image">
+                            <a href="{{ path('login') }}">
+                                <div class="tile-body">
+                                    {#<i class="fa fa-child"></i>#}
+                                    <img src="{{ asset('assets/elrs-assets/user-login.jpg') }}">
+                                </div>
+                                <div class="tile-object">
+                                    <div class="name">
+                                        সেবাগ্রহীত লগইন
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                        {% endif %}
+
+                    </div>
+                </div>
+            <div class="col-md-4 col-sm-12 margin-top-10">
+                <h4 class="bk-org">প্রকল্পের উদ্দেশ্য</h4>
+                <div class="portlet-body stats-info">
+                    <p>বিদ্যমান ভূমি জরিপসমূহের ডিজিটাল পদ্ধতিতে প্রণয়ন এবং সংরক্ষনের সুবিধাসমুহ -</p>
+                    <p>(১) ভূমি ব্যবস্থাপনা আধুনিকায়নের লক্ষ্যে আধুনিক প্রযুক্তি ব্যবহার করে বিভিন্ন জরিপের ( সিএস, এস এ, আরএস  ) খতিয়ানসমূহ ভূমি মালিকগনকে  সহজে সরবরাহ করা।</p>
+
+                    <p>(২) বিভিন্ন জরিপের ( সিএস, এস এ, আরএস  )  খতিয়ানসমূহ  সহজে সরবরাহ করার লক্ষ্যে ভূমি রেকর্ড ও জরিপ অধিদপ্তর এবং জেলা প্রশাসনকে শক্তিশালীকরণ। </p>
+                </div>
+
+            </div>
+
+            </div>
+
+    </div>
+    <!-- All modal list
+     ------------------
+     -------------------------
+     --------------------------------
+     -->
+
+    {{ include(':Frontend:index_partial_porcha_search.html.twig')}}
+    {{ include(':Frontend:index_partial_application_list.html.twig')}}
+    {{ include(':Frontend:index_partial_vrr_list.html.twig')}}
+    {{ include(':Frontend:index_partial_khotian_status.html.twig')}}
+
+    <!-- Modal list ended
+     -----------------------
+     --------------------------------
+     --------------------------------------
+     -->
+
+
+{% endblock %}
+{% block javascriptBlock %}
+
+    {{ parent() }}
+
+    <!-- BEGIN PAGE LEVEL PLUGINS -->
+    {% javascripts
+    '@AppBundle/Resources/public/js/porcha-option.js'
+    '@AppBundle/Resources/public/js/khatianStatus.js'
+    '@AppBundle/Resources/public/js/application.js'
+    %}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+
+    {% endjavascripts %}
+
+    <!-- END GLOBAL JS -->
+{% endblock javascriptBlock %}
+
+{% block documentReady %}
+    {{ parent() }}
+
+    window.locationData = [];
+    locationData[1] = { name: 'ঢাকা বিভাগ', coords: { top: 65, right: 150 } };
+    locationData[2] = { name: 'চট্টগ্রাম বিভাগ', coords: { top: 160, right: 100 } };
+    locationData[3] = { name: 'সিলেট বিভাগ', coords: { top: 65, right: 70 } };
+    locationData[4] = { name: 'খুলনা বিভাগ', coords: { top: 150, right: 220 } };
+    locationData[5] = { name: 'বরিশাল বিভাগ', coords: { top: 220, right: 145 } };
+    locationData[6] = { name: 'রাজশাহী বিভাগ', coords: { top: 65, right: 230 } };
+    locationData[7] = { name: 'রংপুর বিভাগ', coords: { top: -15, right: 250 } };
+
+    app.startAll();
+    window.onloadQueue.push('doLateLoadOnImages');
+    var doLateLoadOnImages = function() {
+    var allImages = document.querySelectorAll('.late-load');
+    for (var i = 0; i < allImages.length; i++) {
+    allImages[i].setAttribute('src', allImages[i].getAttribute('data-src'));
+    allImages[i].style.visibility = "visible";
+    }
+    };
+    PorchaOption.init();
+{% endblock %}

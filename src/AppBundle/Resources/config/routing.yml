@@ -1,0 +1,143 @@
+citizen_homepage:
+    path:     /
+    defaults: { _controller: AppBundle:Porcha:index }
+
+api_routing:
+    resource: "@AppBundle/Resources/config/routes/api.yml"
+    prefix: /
+
+combo_districts:
+    pattern: /option/districts/{divisionId}
+    defaults: { _controller: AppBundle:Porcha:comboDistricts }
+    options:
+        expose: true
+
+combo_upozilas:
+    pattern: /option/upozilas/{districtId}
+    defaults: { _controller: AppBundle:Porcha:comboUpozilas }
+    options:
+        expose: true
+
+combo_mouzas:
+    pattern: /option/mouzas/{upozilaId}
+    defaults: { _controller: AppBundle:Porcha:comboMouzas }
+    options:
+        expose: true
+
+court_fee_list:
+    pattern: /court-fee/{districtId}
+    defaults: { _controller: AppBundle:Porcha:courtFees }
+    options:
+        expose: true
+
+mouza_application_court_fee_list:
+    pattern: /mouza-application-court-fee/{districtId}
+    defaults: { _controller: AppBundle:Porcha:mouzaApplicationCourtFees }
+    options:
+        expose: true
+information_application_court_fee_list:
+    pattern: /information_application-court-fee/{districtId}
+    defaults: { _controller: AppBundle:Porcha:informationApplicationCourtFees }
+    options:
+        expose: true
+
+case_copy_court_fee_list:
+    pattern: /case-copy-court-fee/{districtId}
+    defaults: { _controller: AppBundle:Porcha:caseCopyCourtFees }
+    options:
+        expose: true
+
+delivery_fee_list:
+    pattern: /delivery-fee/{districtId}
+    defaults: { _controller: AppBundle:Porcha:deliveryFees }
+    options:
+        expose: true
+
+khatian_show:
+    path:     /khatian/{id}
+    defaults: { _controller: AppBundle:Porcha:show }
+
+
+division_vrr:
+    path:     /vrr/division/{id}
+    defaults: { _controller: AppBundle:Porcha:divisionVrr }
+
+district_vrr:
+    path:     /vrr/district/{id}
+    defaults: { _controller: AppBundle:Porcha:districtVrr }
+
+upozila_vrr:
+    path:     /vrr/upozila/{id}
+    defaults: { _controller: AppBundle:Porcha:upozilaVrr }
+
+mouza_vrr:
+    path:     /vrr/mouza/{id}/{type}
+    defaults: { _controller: AppBundle:Porcha:mouzaVrr }
+
+
+
+land_projects:
+    path:     /land-projects
+    defaults: { _controller: AppBundle:Porcha:getLandProjects }
+
+user_manual:
+    path:     /user-manual
+    defaults: { _controller: AppBundle:Porcha:getUserManual }
+
+dlrs_services:
+    path:     /dlrs-services
+    defaults: { _controller: AppBundle:Porcha:getDlrsServices }
+
+record_check:
+    path:     /record-Check/{applicationId}
+    defaults: { _controller: AppBundle:Porcha:getRecordCheck }
+    options:
+        expose: true
+
+porcha_application:
+    path:     /porcha-application
+    defaults: { _controller: AppBundle:Porcha:getPorchaApplication }
+
+porcha_correction_application:
+    path:     /porcha-correction-application
+    defaults: { _controller: AppBundle:Porcha:getPorchaCorrectionApplication }
+
+porcha_search:
+    path:     /porcha-search
+    defaults: { _controller: AppBundle:Porcha:getPorchaSearch }
+
+porcha_search_result:
+    path:     /porcha-search-result
+    defaults: { _controller: AppBundle:Porcha:porchaSearchResponse }
+    options:
+        expose: true
+
+mouza_application:
+    path:     /mouza-application
+    defaults: { _controller: AppBundle:Porcha:getMouzaApplication }
+
+case_copy_application:
+    path:     /case_copy-application
+    defaults: { _controller: AppBundle:Porcha:getCaseCopyApplication }
+
+information_application:
+    path:     /information-application
+    defaults: { _controller: AppBundle:Porcha:getInformationApplication }
+
+khatian_status_check:
+    path:     /khatian_status_check/{applicationId}
+    defaults: { _controller: AppBundle:Porcha:getKhatianStatus }
+    options:
+        expose: true
+
+invoice_application:
+    path:     /application-invoice/{data}
+    defaults: { _controller: AppBundle:Porcha:getInvoiceApplication }
+
+#user_login:
+#    path:     /login
+#    defaults: { _controller: AppBundle:Porcha:getLogin }
+#
+#user_registration:
+#    path:     /registration
+#    defaults: { _controller: AppBundle:Porcha:getRegistration }

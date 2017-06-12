@@ -1,0 +1,63 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+
+<div class="page-container" style="background-image: url('{{ asset('assets/elrs-assets/selfB1.jpg') }}');background-repeat: no-repeat">
+    <div class="portlet-body link-check">
+        {% for index,volume in volumes %}
+        <a class="book-style" href="#{{ index }}" data-toggle="modal">
+            <div style="background-image: url('{{ asset('assets/elrs-assets/volume_book.png') }}');width: 60px;height: 169px;background-repeat: no-repeat">
+                <h4 class="volume-style">ভলিউম - {{ index }}</h4>
+            </div>
+        </a>
+
+        <div id="{{ index }}" class="modal fade" tabindex="-1" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content" >
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                        <h1 class="modal-title custom-color-caption"> ভলিউম {{ index }} এর খতিয়ান সমূহ </h1>
+                    </div>
+                    <div class="modal-body">
+                        <div data-always-visible="1" data-rail-visible1="1">
+                            <div class="panel-body volume">
+                            {% for index , vol in volume %}
+                            <a href="{{ path('khatian_show', {'id':  vol['KhatId']}) }}" target="_blank">{{ vol['KhatNo'] }}</a>
+                            {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" data-dismiss="modal" class="btn btn-danger">বাতিল </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+    {#{% for index,volume in volumes %}#}
+    {#<div class="portlet-body">#}
+            {#<div class="panel-group accordion scrollable" id="accordion2">#}
+                {#<div class="panel panel-default">#}
+                    {#<div class="panel-heading">#}
+                        {#<h4 class="panel-title">#}
+                            {#<a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapse_{{ index }}">#}
+                                {#ভলিউম {{ index }}</a>#}
+                        {#</h4>#}
+                    {#</div>#}
+                    {#<div id="collapse_{{ index }}" class="panel-collapse collapse">#}
+                        {#<div class="panel-body volume">#}
+                            {#{% for index , vol in volume %}#}
+                               {#<a href="{{ path('khatian_show', {'id':  vol['KhatId']}) }}" target="_blank"> {{ vol['KhatNo'] }}</a>#}
+                            {#{% endfor %}#}
+                        {#</div>#}
+                    {#</div>#}
+                {#</div>#}
+            {#</div>#}
+        {#</div>#}
+    {#{% endfor %}#}
+
+
+</div>
+
+{% endblock %}

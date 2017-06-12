@@ -1,0 +1,24 @@
+.grey.btn {
+    background-color: #95a5a6;
+    color: #ffffff;
+}
+.yellow.btn {
+    background-color: #ffb848;
+    color: #ffffff;
+}
+.blue.btn {
+    background-color: #4b8df8;
+    color: #ffffff;
+}
+.red.btn {
+    background-color: #d84a38;
+    color: #ffffff;
+}
+.green.btn {
+    background-color: #35aa47;
+    color: #ffffff;
+}
+.btn {
+    font-size: 17px;
+    padding: 4px 8px;
+}

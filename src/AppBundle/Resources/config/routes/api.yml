@@ -1,0 +1,23 @@
+all_divisions:
+    path:     /divisions
+    defaults: { _controller: AppBundle:Api:getDivisions }
+
+all_districts:
+    path:     /districts
+    defaults: { _controller: AppBundle:Api:getDistricts }
+
+all_upozilas:
+    path:     /upozilas
+    defaults: { _controller: AppBundle:Api:getUpozilas }
+
+all_mouzas:
+    path:     /mouzas
+    defaults: { _controller: AppBundle:Api:getMouzas }
+
+all_jlnumbers:
+    path:     /jlnumbers
+    defaults: { _controller: AppBundle:Api:getJlnumbers }
+
+all_surveys:
+    path:     /surveys
+    defaults: { _controller: AppBundle:Api:getSurveys }

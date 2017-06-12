@@ -1,0 +1,165 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+
+<div class="page-container">
+
+    <h3 class="caption-color">{{ mouzas[0].divisionName }} বিভাগ <i class="fa fa-arrow-right" style="font-size: smaller"> </i> {{ mouzas[0].districtName }} জেলা <i class="fa fa-arrow-right" style="font-size: smaller"> </i> {{ mouzas[0].upozilaName }} উপজেলা/ থানা</h3><br>
+    <!-- BEGIN DASHBOARD STATS -->
+    <div class="row">
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <a class="dashboard-stat dashboard-stat-light blue-soft" href="#">
+                <div class="visual">
+                </div>
+                <div class="details">
+                    <div class="number">
+                        {% if totalApplicationReceived is defined and totalApplicationReceived %}
+                        {{ totalApplicationReceived|numberBanglaConvert }}
+                        {% else %}
+                            ০
+                        {% endif %}
+                    </div>
+                    <div class="desc">
+                        সর্বমোট গৃহীত  আবেদন
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <a class="dashboard-stat dashboard-stat-light red-soft" href="#">
+                <div class="visual">
+                </div>
+                <div class="details">
+                    <div class="number">
+                        {% if totalServiceDelivered is defined and totalServiceDelivered %}
+                        {{ totalServiceDelivered|numberBanglaConvert }}
+                        {% else %}
+                            ০
+                        {% endif %}
+                    </div>
+                    <div class="desc">
+                        মোট সর্বাহকৃত আবেদন
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <a class="dashboard-stat dashboard-stat-light green-soft" href="#">
+                <div class="visual">
+                </div>
+                <div class="details">
+                    <div class="number">
+                        {% if totalRecordDigitization is defined and totalRecordDigitization %}
+                        {{ totalRecordDigitization|numberBanglaConvert }}
+                        {% else %}
+                            ০
+                        {% endif %}
+                    </div>
+                    <div class="desc">
+                        সর্বোমোট রেকর্ড ডিজিটাইজেশন
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
+            <a class="dashboard-stat dashboard-stat-light purple-soft" href="#">
+                <div class="visual">
+
+                </div>
+                <div class="details">
+                    <div class="number">
+                        {% if totalUdcServiceDelivered is defined and totalUdcServiceDelivered %}
+                            {{ totalUdcServiceDelivered|numberBanglaConvert }}
+                        {% else %}
+                            ০
+                        {% endif %}
+                    </div>
+                    <div class="desc">
+                        ইউ ডি সি  থেকে  সর্বাহকৃত আবেদন
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    <!-- END DASHBOARD STATS -->
+    <br><br><br>
+
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                <tr>
+                    <th>
+                        ক্রম নং
+                    </th>
+
+                    <th>
+                        মৌজা
+                    </th>
+                    <th>
+                        মোট খতিয়ান/পর্চা (সি এস)
+                    </th>
+                    <th>
+                        মোট খতিয়ান/পর্চা (এস এ )
+                    </th>
+                    <th>
+                        মোট খতিয়ান/পর্চা (আর এস)
+                    </th>
+                    <th>
+                        মোট খতিয়ান/পর্চা আবেদন
+                    </th>
+                    <th>
+                        মোট সর্বাহকৃত  খতিয়ান/পর্চা
+                    </th>
+                    <th>
+                        মোট  অন্যান্য   আবেদন
+                    </th>
+                    <th>
+                        মোট সর্বাহকৃত  অন্যান্য   আবেদন
+                    </th>
+                </tr>
+                </thead>
+                <tbody>
+
+                    {% for index,mouza in mouzas %}
+                        <tr>
+                            <td>
+                                {{ ((mouzas.getCurrentPageNumber - 1) * mouzas.getItemNumberPerPage + index + 1)|numberBanglaConvert }}
+                            </td>
+                            <td>
+                                {{ mouza.name }}
+                            </td>
+                            <td>
+                                <a href="{{ path('mouza_vrr',{'id':mouza.id,'type':'CS'}) }}">  {{ mouza.totalKhatianCS|numberBanglaConvert }} </a>
+                            </td>
+                            <td>
+                                <a href="{{ path('mouza_vrr',{'id':mouza.id,'type':'SA'}) }}">  {{ mouza.totalKhatianSA|numberBanglaConvert }} </a>
+                            </td>
+                            <td>
+                                <a href="{{ path('mouza_vrr',{'id':mouza.id,'type':'RS'}) }}">  {{ mouza.totalKhatianRS|numberBanglaConvert }} </a>
+                            </td>
+
+                            <td>
+                                {{ mouza.totalKhatianReceived|numberBanglaConvert }}
+                            </td>
+                            <td>
+                                {{ mouza.totalKhatianDelivered|numberBanglaConvert }}
+                            </td>
+                            <td>
+                                {{ mouza.totalOtherAppReceived|numberBanglaConvert }}
+                            </td>
+                            <td>
+                                {{ mouza.totalOtherAppDelivered|numberBanglaConvert }}
+                            </td>
+                        </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+            <div style="clear: both;"></div>
+            <div style="margin-top:30px; text-align: center;" class="navigation">
+                {{ knp_pagination_render(mouzas) }}
+            </div>
+        </div>
+</div>
+{% endblock %}

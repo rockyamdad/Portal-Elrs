@@ -1,0 +1,43 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+<div class="page-container">
+    <div class="container">
+        <h1 class="caption-color">লগইন করুন</h1>
+        <div class="col-md-7 col-sm-7">
+            <form class="form-horizontal form-without-legend" role="form">
+                <div class="form-group">
+                    <label for="email" class="col-lg-4 control-label">ব্যবহারকারীর নাম <span class="require">*</span></label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control" id="email" placeholder="ব্যবহারকারীর নাম">
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="password" class="col-lg-4 control-label">পাসওয়ার্ড <span class="require">*</span></label>
+                    <div class="col-lg-8">
+                        <input type="text" class="form-control" id="password" placeholder="পাসওয়ার্ড">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 col-md-offset-4 padding-left-0">
+                        <a href="page-forgotton-password.html">পাসওয়ার্ড ভুলে গেছেন?</a>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-8 col-md-offset-4 padding-left-0 padding-top-20">
+                        <button type="submit" class="btn btn-primary button-save-color">লগইন</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-4">
+            <div class="form-info">
+                <h2><em>Important</em> Information</h2>
+                <p>Duis autem vel eum iriure at dolor vulputate velit esse vel molestie at dolore.</p>
+
+                <button type="button" class="btn btn-default button-save-color">More details</button>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,51 @@
+#user_homepage:
+#    path:     /
+#    defaults: { _controller: UserBundle:Default:index }
+
+user_registration:
+    path:     /registation
+    defaults: { _controller: UserBundle:User:registation }
+
+login:
+    path:     /login
+    defaults: { _controller: UserBundle:User:login }
+
+log_out:
+     path:    /logout
+     defaults: { _controller: UserBundle:User:logout }
+
+profile:
+     path:    /profile/{phoneNumber}
+     defaults: { _controller: UserBundle:User:profile }
+
+appliedPorcha:
+     path:    /appliedPorcha/{phoneNumber}
+     defaults: { _controller: UserBundle:User:appliedPorcha }
+
+appliedMouzaMap:
+     path:    /appliedMouzaMap/{phoneNumber}
+     defaults: { _controller: UserBundle:User:appliedMouzaMap }
+
+appliedCaseCopy:
+     path:    /appliedCaseCopy/{phoneNumber}
+     defaults: { _controller: UserBundle:User:appliedCaseCopy }
+
+appliedInformationSlip:
+     path:    /appliedInformationSlip/{phoneNumber}
+     defaults: { _controller: UserBundle:User:appliedInformationSlip}
+
+profile_edit:
+     path:    /profile_edit/{phoneNumber}
+     defaults: { _controller: UserBundle:User:profileEdit }
+
+password_change:
+     path:    /password_change/{phoneNumber}
+     defaults: { _controller: UserBundle:User:passwordChange }
+
+forget_password:
+     path:    /forget_password
+     defaults: { _controller: UserBundle:User:forgetPassword }
+
+forget_password_verification:
+     path:    /forget_password_verification/{phoneNumber}
+     defaults: { _controller: UserBundle:User:forgetPasswordVerification }

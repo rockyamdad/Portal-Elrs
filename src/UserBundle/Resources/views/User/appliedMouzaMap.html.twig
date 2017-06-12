@@ -1,0 +1,137 @@
+{% extends "::base.html.twig" %}
+
+{% block body %}
+<div class="page-container">
+
+        <div class="row profile">
+            <div class="col-md-12">
+
+                <div class="tabbable tabbable-custom tabbable-noborder">
+                    <ul class="nav nav-tabs">
+                        <li>
+                            <a href="{{ path('profile',{'phoneNumber' :  app.session.get('phoneNumber')  }) }}">
+                                প্রোফাইল </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('appliedPorcha',{'phoneNumber' :  app.session.get('phoneNumber')  }) }}">
+                                আবেদিনকৃত পর্চা  </a>
+                        </li>
+                        <li class="active">
+                            <a href="{{ path('appliedMouzaMap',{'phoneNumber' :  app.session.get('phoneNumber')  }) }}">
+                                আবেদিনকৃত মৌজা ম্যাপ </a>
+                        </li>
+                        <li>
+                            <a href="{{ path('appliedCaseCopy',{'phoneNumber' :  app.session.get('phoneNumber')  }) }}">
+                                আবেদিনকৃত কেস কপি </a>
+                        </li>
+
+                        <li >
+                            <a href="{{ path('appliedInformationSlip',{'phoneNumber' :  app.session.get('phoneNumber')  }) }}">
+                                আবেদিনকৃত তথ্য স্লিপ </a>
+                        </li>
+
+                    </ul>
+                    <div class="tab-content">
+
+<br><br>
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                    <tr>
+                                        <th>
+                                            ক্রম নং
+                                        </th>
+                                        <th>
+                                            আবেদন নং
+                                        </th>
+                                        <th>
+                                            মৌজা ম্যাপ ধরন
+                                        </th>
+                                        <th>
+                                            উপজেলা /থানা
+                                        </th>
+                                        <th>
+                                            মৌজা
+                                        </th>
+                                        <th>
+                                            দাগ নং
+                                        </th>
+                                        <th>
+                                            শিট নং
+                                        </th>
+                                        <th>
+                                            অবস্থা
+                                        </th>
+                                        <th>
+                                            আনুমানিক বিলি তারিখ
+                                        </th>
+                                        <th>
+                                            আবেদনের  তারিখ
+                                        </th>
+
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for index,data in mouzaMapList %}
+
+                                    <tr>
+                                        <td>
+                                            {{ ((mouzaMapList.getCurrentPageNumber - 1) * mouzaMapList.getItemNumberPerPage + index + 1)|numberBanglaConvert }}
+                                        </td>
+                                        <td>
+                                            {{ data.applicationNo|numberBanglaConvert }}
+                                        </td>
+                                        <td>
+                                            {{ data.surveyType }}
+                                        </td>
+                                        <td>
+                                            {{ data.upozila }}
+                                        </td>
+                                        <td>
+                                            {{ data.mouza }}
+                                        </td>
+                                        <td>
+                                            {{ data.dagNo|numberBanglaConvert }}
+                                        </td>
+                                        <td>
+                                            {{ data.sheetNo|numberBanglaConvert }}
+                                        </td>
+                                        <td>
+                                            {% if data.status == 'PENDING' %}
+                                                <p>আপনার আবেদনটি  অনুমোদনের অপেক্ষায়  আছে </p>
+                                            {% elseif data.status == 'PROCESSING' %}
+                                                <p>আপনার আবেদনটি  প্রক্রিয়াকরণ হচ্ছে </p>
+                                            {% elseif data.status == 'READY_FOR_DELIVERY' %}
+                                                <p>আপনার আবেদনটি  বিতরণের  এর জন্য প্রস্তুত </p>
+                                            {% elseif data.status == 'DELIVERED' %}
+                                                <p>আপনার আবেদনটি  ইতিমধ্যে বিতরণ করা হয়</p>
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {% if data.estimateDeliveryAt is defined and data.estimateDeliveryAt %}
+                                                {{ data.estimateDeliveryAt.date|date("d/m/Y", false)|numberBanglaConvert }}
+                                            {% endif %}
+                                        </td>
+                                        <td>
+                                            {{ data.createdAt.date|date("d/m/Y", false)|numberBanglaConvert }}
+                                        </td>
+                                    </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                                <div style="clear: both;"></div>
+                                <div style="margin-top:30px; text-align: center;" class="navigation">
+                                    {{ knp_pagination_render(mouzaMapList) }}
+                                </div>
+                            </div>
+
+
+                    </div>
+
+
+                </div>
+            </div>
+        </div>
+
+</div>
+{% endblock %}

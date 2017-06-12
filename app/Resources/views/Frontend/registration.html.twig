@@ -1,0 +1,126 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+<div class="page-container">
+    <!-- BEGIN SLIDER -->
+    <div class="container">
+
+        <h1 class="caption-color">নিবন্ধন করুন</h1>
+        <div class="row">
+            <div class="col-md-7 col-sm-7">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group custom-radio-design">
+
+                        <label>নিবন্ধন  মাধ্যম</label>
+                        <div class="radio-list">
+                            <label class="radio-inline">
+                                <input type="radio" name="optionsRadios"  value="option1" checked> জাতীয় পরিচয় পত্র </label>
+                            <label class="radio-inline">
+                                <input type="radio" name="optionsRadios"  value="option2"> মোবাইল নম্বর</label>
+                        </div>
+                    </div>
+                    <fieldset>
+                        <legend class="caption-color">আপনার ব্যক্তিগত তথ্যসমূহ</legend>
+                        <div class="form-group">
+                            <label for="firstname" class="col-lg-4 control-label">জাতীয় পরিচয় পত্র <span class="require">*</span></label>
+                            <div class="col-lg-8">
+                                <input type="text" class="form-control" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="firstname" class="col-lg-4 control-label">জন্ম তারিখ<span class="require">*</span></label>
+                            <div class="col-lg-8">
+                                <div class="input-group input-medium date date-picker" data-date-format="dd-mm-yyyy" data-date-start-date="+0d">
+                                    <input type="text" class="form-control" style="width:383px;" readonly>
+												<span class="input-group-btn">
+												<button class="btn default" type="button"><i class="fa fa-calendar"></i></button>
+												</span>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="form-group">
+                            <label  class="col-lg-4 control-label">নাম <span class="require">*</span></label>
+                            <div class="col-lg-8">
+                                <input type="text" class="form-control" id="firstname">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label  class="col-lg-4 control-label">পিতার নাম <span class="require">*</span></label>
+                            <div class="col-lg-8">
+                                <input type="text" class="form-control" id="lastname">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label  class="col-lg-4 control-label">মাতার নাম <span class="require">*</span></label>
+                            <div class="col-lg-8">
+                                <input type="text" class="form-control" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label class="col-lg-4 control-label">লিঙ্গ <span class="require">*</span></label>
+                            <div class="col-lg-8">
+                                <select name="foo" class="select2me form-control">
+                                    <option value="1">লিঙ্গ নির্বাচন করুন </option>
+                                    <option value="1">পুরুষ</option>
+                                    <option value="1">মহিলা</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label  class="col-lg-4 control-label">মোবাইল নম্বর <span class="require">*</span></label>
+                            <div class="col-lg-8">
+                                <input type="text" class="form-control" >
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label  class="col-lg-4 control-label">ঠিকানা <span class="require">*</span></label>
+                            <div class="col-lg-8">
+                                <textarea class="form-control" rows="3"></textarea>
+
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" class="col-lg-4 control-label">ইমেইল  <span class="require">*</span></label>
+                            <div class="col-lg-8">
+                                <input type="text" class="form-control" id="email">
+                            </div>
+                        </div>
+                    </fieldset>
+                    <fieldset>
+                        <legend class="caption-color">পাসওয়ার্ড</legend>
+                        <div class="form-group">
+                            <label for="password" class="col-lg-4 control-label">পাসওয়ার্ড <span class="require">*</span></label>
+                            <div class="col-lg-8">
+                                <input type="text" class="form-control" id="password">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm-password" class="col-lg-4 control-label">নিশ্চিত পাসওয়ার্ড <span class="require">*</span></label>
+                            <div class="col-lg-8">
+                                <input type="text" class="form-control" id="confirm-password">
+                            </div>
+                        </div>
+                    </fieldset>
+                    <div class="row">
+                        <div class="col-lg-8 col-md-offset-4 padding-left-0 padding-top-20">
+                            <button type="submit" class="btn btn-primary button-save-color">অ্যাকাউন্ট তৈরি করুন</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-4 col-sm-4">
+                <div class="form-info">
+                    <h2><em>Important</em> Information</h2>
+                    <p>Lorem ipsum dolor ut sit ame dolore  adipiscing elit, sed sit nonumy nibh sed euismod ut laoreet dolore magna aliquarm erat sit volutpat. Nostrud exerci tation ullamcorper suscipit lobortis nisl aliquip  commodo quat.</p>
+
+                    <p>Duis autem vel eum iriure at dolor vulputate velit esse vel molestie at dolore.</p>
+
+                    <button type="button" class="btn btn-default">More details</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- END CONTENT -->
+    </div>
+</div>
+{% endblock %}
